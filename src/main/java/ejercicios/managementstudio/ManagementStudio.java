@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package ejercicios.managementstudio;
+
+import ejercicios.DataAcces.DataAccess;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *
@@ -10,7 +10,7 @@ package ejercicios.managementstudio;
  */
 public class ManagementStudio {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args) throws SQLException {
+
     }
 }
