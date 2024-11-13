@@ -1,8 +1,8 @@
-
 package ejercicios.managementstudio;
 
 import ejercicios.DataAcces.DataAccess;
 import ejercicios.dto.Usuari;
+import javax.swing.UIManager;
 
 /**
  *
@@ -22,7 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
     ModUser modUser;
     DelUser delUser;
     About about;
-    
+
     public MainFrame() {
         initComponents();
         setSize(600, 500);
@@ -59,11 +59,14 @@ public class MainFrame extends javax.swing.JFrame {
         menuModExer = new javax.swing.JMenuItem();
         menuAddExer = new javax.swing.JMenuItem();
         menuDelExer = new javax.swing.JMenuItem();
-        menuCreateExer = new javax.swing.JMenuItem();
+        menuCreateWorkout = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         menuAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ManagementStudio");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         getContentPane().setLayout(null);
 
         jLabel1.setText("Iniciar sesión");
@@ -205,13 +208,13 @@ public class MainFrame extends javax.swing.JFrame {
         });
         menuExercises.add(menuDelExer);
 
-        menuCreateExer.setText("Create workout");
-        menuCreateExer.addActionListener(new java.awt.event.ActionListener() {
+        menuCreateWorkout.setText("Create workout");
+        menuCreateWorkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCreateExerActionPerformed(evt);
+                menuCreateWorkoutActionPerformed(evt);
             }
         });
-        menuExercises.add(menuCreateExer);
+        menuExercises.add(menuCreateWorkout);
 
         menuBar.add(menuExercises);
 
@@ -245,6 +248,7 @@ public class MainFrame extends javax.swing.JFrame {
         addUser = new AddUser(this, true);
         addUser.setVisible(true);
     }//GEN-LAST:event_menuAddUserActionPerformed
+
 
     private void menuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitActionPerformed
         this.dispose();
@@ -292,14 +296,14 @@ public class MainFrame extends javax.swing.JFrame {
         delExer.setVisible(true);
     }//GEN-LAST:event_menuDelExerActionPerformed
 
-    private void menuCreateExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCreateExerActionPerformed
+    private void menuCreateWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCreateWorkoutActionPerformed
         createWorkout = new CreateWorkout(this, true);
         createWorkout.setVisible(true);
-    }//GEN-LAST:event_menuCreateExerActionPerformed
+    }//GEN-LAST:event_menuCreateWorkoutActionPerformed
 
     /*
     Method to change the main view when someone is logged in the app
-    */
+     */
     private void showSecondMain(Usuari userConnected) {
         secondMain = new SecondMain(userConnected);
         mainPanel.setVisible(false);
@@ -307,6 +311,13 @@ public class MainFrame extends javax.swing.JFrame {
         secondMain.setBounds(0, 0, 570, 460);
         secondMain.setVisible(true);
         menuBar.setVisible(true);
+        if (!userConnected.isInstructor()) {
+            menuUsers.setVisible(false);
+            menuAddExer.setVisible(false);
+            menuModExer.setVisible(false);
+            menuDelExer.setVisible(false);
+            menuCreateWorkout.setVisible(false);
+        }
         setResizable(false);
     }
 
@@ -340,6 +351,7 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
                 new MainFrame().setVisible(true);
             }
         });
@@ -355,7 +367,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAddExer;
     private javax.swing.JMenuItem menuAddUser;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem menuCreateExer;
+    private javax.swing.JMenuItem menuCreateWorkout;
     private javax.swing.JMenuItem menuDelExer;
     private javax.swing.JMenuItem menuDelUser;
     private javax.swing.JMenu menuExercises;

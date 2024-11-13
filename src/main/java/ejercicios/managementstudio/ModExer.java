@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package ejercicios.managementstudio;
 
 import ejercicios.DataAcces.DataAccess;
+import ejercicios.Utils.Utils;
 import ejercicios.dto.Exercici;
-import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -29,24 +25,12 @@ public class ModExer extends javax.swing.JDialog {
         setSize(400, 300);
         setLocationRelativeTo(null);
         setResizable(false);
-        
+
         cmbExercici = new JComboBox<>();
         jScrollPane1.setViewportView(cmbExercici);
-        pintarExer();
-        
-    }
+        cmbExercici.setModel(Utils.pintarExer());
 
-    private void pintarExer() {
-        ArrayList<Exercici> exercicis = da.getAllExercicis();
-        DefaultComboBoxModel<Exercici> dfme = new DefaultComboBoxModel<>();
-        for (Exercici e : exercicis) {
-            dfme.addElement(e);
-        }
-        cmbExercici.setModel(dfme);
     }
-
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,10 +118,11 @@ public class ModExer extends javax.swing.JDialog {
 
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
         Exercici exer = (Exercici) cmbExercici.getSelectedItem();
-        if(da.updateExercici(exer.getId(),cmbCampo.getSelectedItem().toString(), txtModExer.getText()) >0){
+        if (da.updateExercici(exer.getId(), cmbCampo.getSelectedItem().toString(), txtModExer.getText()) > 0) {
             JOptionPane.showMessageDialog(rootPane, "Exercise successfully modified");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Error! exercise can't be modified");
         }
-        
     }//GEN-LAST:event_btnModifyActionPerformed
 
     /**

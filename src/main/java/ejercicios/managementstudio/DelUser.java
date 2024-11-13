@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package ejercicios.managementstudio;
+
+import ejercicios.DataAcces.DataAccess;
+import ejercicios.Utils.Utils;
+import ejercicios.dto.Usuari;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,14 +16,20 @@ public class DelUser extends javax.swing.JDialog {
     /**
      * Creates new form DelUser
      */
+    private javax.swing.JComboBox<Usuari> cmbUsuari;
+    private DataAccess da = new DataAccess();
+
     public DelUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setSize(400, 300);
         setLocationRelativeTo(null);
         setResizable(false);
-    }
 
+        cmbUsuari = new JComboBox<>();
+        jScrollPane1.setViewportView(cmbUsuari);
+        cmbUsuari.setModel(Utils.pintarUsers());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,16 +40,19 @@ public class DelUser extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         btnDelUser = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Users:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnDelUser.setText("Delete User");
+        btnDelUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,28 +62,42 @@ public class DelUser extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(193, 193, 193))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
+                        .addGap(139, 139, 139)
                         .addComponent(btnDelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addComponent(btnDelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDelUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelUserActionPerformed
+
+        Usuari user = (Usuari) cmbUsuari.getSelectedItem();
+        if (da.deleteUser(user.getId()) > 0) {
+            JOptionPane.showMessageDialog(rootPane, "User successfully deleted");
+            cmbUsuari.removeAllItems();
+            cmbUsuari.setModel(Utils.pintarUsers());
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Error! user can't be deleted");
+        }
+    }//GEN-LAST:event_btnDelUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +143,7 @@ public class DelUser extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelUser;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

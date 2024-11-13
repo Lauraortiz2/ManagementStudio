@@ -5,10 +5,8 @@
 package ejercicios.managementstudio;
 
 import ejercicios.DataAcces.DataAccess;
-import ejercicios.dto.Exercici;
+import ejercicios.Utils.Utils;
 import ejercicios.dto.Usuari;
-import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -34,18 +32,8 @@ public class CreateWorkout extends javax.swing.JDialog {
 
         cmbUsuari = new JComboBox<>();
         jScrollPane2.setViewportView(cmbUsuari);
-        pintarUsers();
+        cmbUsuari.setModel(Utils.pintarUsers());
     }
-
-    private void pintarUsers() {
-        ArrayList<Usuari> users = da.getAllUsers();
-        DefaultComboBoxModel<Usuari> dfmu = new DefaultComboBoxModel<>();
-        for (Usuari u : users) {
-            dfmu.addElement(u);
-        }
-        cmbUsuari.setModel(dfmu);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

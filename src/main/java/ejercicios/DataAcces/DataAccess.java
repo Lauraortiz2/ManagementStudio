@@ -3,6 +3,10 @@ package ejercicios.DataAcces;
 import ejercicios.dto.Exercici;
 import ejercicios.dto.Usuari;
 import ejercicios.dto.Workout;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -173,20 +179,26 @@ public class DataAccess {
         return exercicis;
     }
 
-    public static int registerUser(Usuari u) {
-        String sql = "INSERT INTO dbo.Usuaris (Nom, Email, PasswordHash, Instructor)"
-                + " VALUES (?,?,?,?)"
+    public static int registerUser(Usuari u, File imageFile) {
+        String sql = "INSERT INTO dbo.Usuaris (Nom, Email, PasswordHash, Foto, FotoFilename, Instructor)"
+                + " VALUES (?,?,?,?,?,?)"
                 + " SELECT CAST(SCOPE_IDENTITY() as int)";
+
         try (Connection conn = getConnection(); PreparedStatement insertStatement = conn.prepareStatement(sql)) {
+            FileInputStream fis = new FileInputStream(imageFile);
             insertStatement.setString(1, u.getNom());
             insertStatement.setString(2, u.getEmail());
             insertStatement.setString(3, u.getPasswordHash());
-            insertStatement.setBoolean(4, u.isInstructor());
+            insertStatement.setBinaryStream(4, fis, imageFile.length());
+            insertStatement.setString(5, imageFile.getName());
+            insertStatement.setBoolean(6, u.isInstructor());
 
             int newUserId = insertStatement.executeUpdate();
             return newUserId;
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
@@ -276,7 +288,24 @@ public class DataAccess {
         return 0;
     }
 
-    public int deleteExercici(String exerId) {
+    public static int getCountExercicisPerWorkout(int exerId) {
+        String sql = "SELECT count(IdWorkout) counter"
+                + " FROM ExercicisWorkouts "
+                + " WHERE ExercicisWorkouts.IdExercici=? group by IdExercici";
+        try (Connection connection = getConnection(); PreparedStatement selectStatement = connection.prepareStatement(sql);) {
+            selectStatement.setInt(1, exerId);
+            ResultSet resultSet = selectStatement.executeQuery();
+            while (resultSet.next()) {
+                return resultSet.getInt("counter");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int deleteExercici(int exerId) {
         String sql = "DELETE FROM dbo.Exercicis WHERE Id = " + exerId;
         try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {
             int rowsAffected = updateStatement.executeUpdate();
@@ -301,4 +330,47 @@ public class DataAccess {
         }
         return 0;
     }
+
+    public int deleteUser(int userId) {
+        String sql = "DELETE FROM dbo.Usuaris WHERE Id = " + userId;
+        try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {
+            int rowsAffected = updateStatement.executeUpdate();
+            return rowsAffected;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int updateUser(int userId, String field, String value) {
+        String sql = "UPDATE dbo.Usuaris SET " + field + "= '" + value + "' WHERE Id = " + userId;
+        try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {
+            int rowsAffected = updateStatement.executeUpdate();
+            return rowsAffected;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int updateFotoUser(int userId, File imageFile) {
+        String sql = "UPDATE dbo.Usuaris SET Foto =?, FotoFilename = ? WHERE Id = ?";
+        try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {
+            FileInputStream fis = new FileInputStream(imageFile);
+            updateStatement.setBinaryStream(1, fis,(int) imageFile.length());
+            updateStatement.setString(2, imageFile.getName());
+            updateStatement.setInt(3, userId);
+            int rowsAffected = updateStatement.executeUpdate();
+            fis.close();
+            return rowsAffected;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package ejercicios.managementstudio;
 
 /**
@@ -37,6 +34,8 @@ public class About extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        txaInfo.setEditable(false);
+        txaInfo.setBackground(new java.awt.Color(204, 204, 204));
         txaInfo.setColumns(20);
         txaInfo.setRows(5);
         jScrollPane1.setViewportView(txaInfo);

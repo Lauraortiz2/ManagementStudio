@@ -23,17 +23,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnDel" min="-2" pref="137" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="txtExerId" min="-2" pref="106" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="171" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="btnDel" min="-2" pref="137" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <EmptySpace pref="97" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,11 +46,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="txtExerId" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="btnDel" min="-2" pref="41" max="-2" attributes="0"/>
-              <EmptySpace pref="68" max="32767" attributes="0"/>
+              <EmptySpace pref="82" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,7 +69,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtExerId">
-    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+    </Container>
   </SubComponents>
 </Form>

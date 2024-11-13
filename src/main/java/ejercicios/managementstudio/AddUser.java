@@ -4,8 +4,11 @@
  */
 package ejercicios.managementstudio;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import ejercicios.DataAcces.DataAccess;
 import ejercicios.dto.Usuari;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,6 +53,7 @@ public class AddUser extends javax.swing.JDialog {
         txtAssignInstructor = new javax.swing.JTextField();
         btnAddUser = new javax.swing.JButton();
         cmbIsInstructor = new javax.swing.JComboBox<>();
+        btnFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -76,6 +80,13 @@ public class AddUser extends javax.swing.JDialog {
 
         cmbIsInstructor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
 
+        btnFoto.setText("jButton1");
+        btnFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFotoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,7 +105,10 @@ public class AddUser extends javax.swing.JDialog {
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(txtAssignInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -102,7 +116,7 @@ public class AddUser extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +128,8 @@ public class AddUser extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -142,7 +157,7 @@ public class AddUser extends javax.swing.JDialog {
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         String name = txtName.getText();
         String email = txtEmail.getText();
-        String Passwordhash = pswPassword.getSelectedText();
+        String Passwordhash = BCrypt.withDefaults().hashToString(12,pswPassword.getPassword());
         String foto = txtFoto.getText();
         boolean isInstructor = false;
         String instructor = txtAssignInstructor.getText();
@@ -150,15 +165,24 @@ public class AddUser extends javax.swing.JDialog {
         if ("Yes".equals(cmbIsInstructor.getSelectedItem().toString())) {
             isInstructor = true;
         }
+        
 
         Usuari user = new Usuari(name, email, Passwordhash, foto, isInstructor, instructor);
-
-        if (da.registerUser(user) > 0) {
+        File imageFile = new File(txtFoto.getText());
+        if (da.registerUser(user, imageFile) > 0) {
             JOptionPane.showMessageDialog(rootPane, "User successfully registered");
         } else {
             JOptionPane.showMessageDialog(rootPane, "Error! User can't be registered");
         }
     }//GEN-LAST:event_btnAddUserActionPerformed
+
+    private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int returnOption = fileChooser.showOpenDialog(this);
+        if(returnOption == JFileChooser.APPROVE_OPTION){
+        txtFoto.setText(fileChooser.getSelectedFile().getAbsolutePath());
+        } 
+    }//GEN-LAST:event_btnFotoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,6 +228,7 @@ public class AddUser extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddUser;
+    private javax.swing.JButton btnFoto;
     private javax.swing.JComboBox<String> cmbIsInstructor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
