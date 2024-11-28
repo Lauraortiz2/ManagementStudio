@@ -71,12 +71,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Iniciar sesión");
 
-        lblLogo.setIcon(new javax.swing.ImageIcon("D:\\Github\\ManagementStudio1\\ManagementStudio\\src\\main\\java\\ejercicios\\Resources\\Imagenes\\image.png")); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image.png"))); // NOI18N
         lblLogo.setText("jLabel2");
 
         jLabel3.setText("www.ManagementStudio.com");
 
-        btnLogin.setIcon(new javax.swing.ImageIcon("D:\\Github\\ManagementStudio1\\ManagementStudio\\src\\main\\java\\ejercicios\\Resources\\Imagenes\\login.jpeg")); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.jpeg"))); // NOI18N
         btnLogin.setText("jButton1");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
