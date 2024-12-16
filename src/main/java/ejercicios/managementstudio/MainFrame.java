@@ -25,7 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     public MainFrame() {
         initComponents();
-        setSize(600, 500);
+        setSize(700, 600);
         setLocationRelativeTo(null);
         menuBar.setVisible(false);
         setResizable(false);
@@ -308,7 +308,7 @@ public class MainFrame extends javax.swing.JFrame {
         secondMain = new SecondMain(userConnected);
         mainPanel.setVisible(false);
         getContentPane().add(secondMain);
-        secondMain.setBounds(0, 0, 570, 460);
+        secondMain.setBounds(0, 0, 570, 500);
         secondMain.setVisible(true);
         menuBar.setVisible(true);
         if (!userConnected.isInstructor()) {
