@@ -26,9 +26,8 @@ public class CreateWorkout extends javax.swing.JDialog {
     public CreateWorkout(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(400, 400);
+        setSize(440, 420);
         setLocationRelativeTo(null);
-        setResizable(false);
 
         cmbUsuari = new JComboBox<>();
         jScrollPane2.setViewportView(cmbUsuari);
@@ -54,12 +53,16 @@ public class CreateWorkout extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Enter workout date:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setText("Select user:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setText("Enter your comments:");
 
+        btnCreateWorkout.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnCreateWorkout.setText("Create workout");
         btnCreateWorkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +91,7 @@ public class CreateWorkout extends javax.swing.JDialog {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(111, 111, 111)
                             .addComponent(btnCreateWorkout, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +110,7 @@ public class CreateWorkout extends javax.swing.JDialog {
                 .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(btnCreateWorkout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();

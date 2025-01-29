@@ -24,7 +24,6 @@ public class ModExer extends javax.swing.JDialog {
         initComponents();
         setSize(400, 300);
         setLocationRelativeTo(null);
-        setResizable(false);
 
         cmbExercici = new JComboBox<>();
         jScrollPane1.setViewportView(cmbExercici);
@@ -47,27 +46,32 @@ public class ModExer extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         txtModExer = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        btnModify = new javax.swing.JButton();
         cmbCampo = new javax.swing.JComboBox<>();
+        btnModify = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Selecciona un ejercicio:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setText("Selecciona un campo:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setText("Introduce texto:");
 
+        cmbCampo.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        cmbCampo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NomExercici", "Descripcio", "DemoFoto" }));
+
+        btnModify.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnModify.setText("Modify exercise");
         btnModify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModifyActionPerformed(evt);
             }
         });
-
-        cmbCampo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NomExercici", "Descripcio", "DemoFoto" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,7 +95,7 @@ public class ModExer extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(btnModify)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +108,7 @@ public class ModExer extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cmbCampo, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtModExer, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -23,7 +23,6 @@ public class AddExer extends javax.swing.JDialog {
         initComponents();
         setSize(400, 350);
         setLocationRelativeTo(null);
-        setResizable(false);
         
     }
 
@@ -46,12 +45,16 @@ public class AddExer extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Exercise name:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setText("Exercise description:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setText("Exercise photo:");
 
+        btnAdd.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnAdd.setText("Add Exercise");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +102,7 @@ public class AddExer extends javax.swing.JDialog {
                     .addComponent(txtExerFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();

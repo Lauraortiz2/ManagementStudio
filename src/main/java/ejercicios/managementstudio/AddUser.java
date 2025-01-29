@@ -25,9 +25,8 @@ public class AddUser extends javax.swing.JDialog {
     public AddUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(425, 425);
+        setSize(430, 425);
         setLocationRelativeTo(null);
-        setResizable(false);
 
     }
 
@@ -57,20 +56,27 @@ public class AddUser extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Enter user name:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setText("Enter user email:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setText("Enter password:");
 
         pswPassword.setText("jPasswordField1");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel4.setText("Enter photo:");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel5.setText("Is an instructor?");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel6.setText("Enter an assigned instructor:");
 
+        btnAddUser.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnAddUser.setText("Add User");
         btnAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +84,7 @@ public class AddUser extends javax.swing.JDialog {
             }
         });
 
+        cmbIsInstructor.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         cmbIsInstructor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
 
         btnFoto.setText("jButton1");
@@ -116,7 +123,7 @@ public class AddUser extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +155,7 @@ public class AddUser extends javax.swing.JDialog {
                     .addComponent(txtAssignInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();

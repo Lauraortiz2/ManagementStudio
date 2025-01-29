@@ -26,7 +26,6 @@ public class ViewExercises extends javax.swing.JDialog {
         initComponents();
         setSize(600, 300);
         setLocationRelativeTo(null);
-        setResizable(false);
         
         lstExer = new javax.swing.JList<>();
         jScrollPane1.setViewportView(lstExer);
@@ -69,8 +68,10 @@ public class ViewExercises extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Exercises:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setText("Details:");
 
         txtDetails.setEditable(false);
@@ -101,7 +102,7 @@ public class ViewExercises extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtDetails, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         pack();

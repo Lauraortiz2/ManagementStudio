@@ -116,12 +116,16 @@ public class SecondMain extends javax.swing.JPanel {
         jLabelStatusBar = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
+        setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         setPreferredSize(new java.awt.Dimension(700, 500));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Users:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setText("Workouts:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setText("Workout details:");
 
         jPanelImagenes1.setConnectionString("DefaultEndpointsProtocol=https;AccountName=spdviblobserver;AccountKey=WxChLmV+vf9lZYL+o/xsqQz6+NBPFuXJRjtMKiwOM7wn0A11Y/kgeu7MiNVrXuRDuzdH89dZRM61+ASt5UrADg==;EndpointSuffix=core.windows.net");
@@ -129,6 +133,7 @@ public class SecondMain extends javax.swing.JPanel {
         jPanelImagenes1.setPollingInterval(10);
         jPanelImagenes1.setRunning(true);
 
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jButton1.setText("Calendario Workout");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +162,7 @@ public class SecondMain extends javax.swing.JPanel {
                         .addComponent(jPanelImagenes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelStatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +189,7 @@ public class SecondMain extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

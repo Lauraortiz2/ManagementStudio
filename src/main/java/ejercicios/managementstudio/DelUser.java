@@ -24,7 +24,6 @@ public class DelUser extends javax.swing.JDialog {
         initComponents();
         setSize(400, 300);
         setLocationRelativeTo(null);
-        setResizable(false);
 
         cmbUsuari = new JComboBox<>();
         jScrollPane1.setViewportView(cmbUsuari);
@@ -45,8 +44,10 @@ public class DelUser extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Users:");
 
+        btnDelUser.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnDelUser.setText("Delete User");
         btnDelUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +71,7 @@ public class DelUser extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(139, 139, 139)
                         .addComponent(btnDelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +82,7 @@ public class DelUser extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(btnDelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();

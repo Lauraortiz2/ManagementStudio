@@ -24,9 +24,8 @@ public class ModUser extends javax.swing.JDialog {
     public ModUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(425, 350);
+        setSize(425, 380);
         setLocationRelativeTo(null);
-        setResizable(false);
 
         cmbUsuari = new JComboBox<>();
         jScrollPane1.setViewportView(cmbUsuari);
@@ -53,12 +52,16 @@ public class ModUser extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Users:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setText("Select an option:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setText("Enter text:");
 
+        btnModUser.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnModUser.setText("Modify User");
         btnModUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,9 +69,11 @@ public class ModUser extends javax.swing.JDialog {
             }
         });
 
+        cmbCampo.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         cmbCampo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nom", "Email", "PasswordHash", "Foto", "Instructor", "AssignedInstructor" }));
 
-        btnFoto.setText("Select photo");
+        btnFoto.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btnFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/foto.png"))); // NOI18N
         btnFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFotoActionPerformed(evt);
@@ -95,16 +100,15 @@ public class ModUser extends javax.swing.JDialog {
                                         .addGap(167, 167, 167)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(cmbCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cmbCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addComponent(btnModUser, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnFoto)
-                .addGap(61, 61, 61))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,14 +124,14 @@ public class ModUser extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnFoto)
-                .addGap(9, 9, 9)
+                .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtModUser, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnModUser, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

@@ -39,7 +39,7 @@
                       <Component id="btnLogin" min="-2" pref="104" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="154" max="32767" attributes="0"/>
+              <EmptySpace pref="105" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,7 +54,7 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtPasswordLogin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Component id="btnLogin" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
           </Group>
@@ -64,26 +64,41 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Por favor, introduce tu email"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtUsuari">
       <Properties>
-        <Property name="text" type="java.lang.String" value="user"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="a@b.c"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Por favor, introduce tu contrase&#xf1;a"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtPasswordLogin">
       <Properties>
-        <Property name="text" type="java.lang.String" value="      "/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="string"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogin">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Black" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
       <Events>

@@ -37,6 +37,7 @@ public class About extends javax.swing.JDialog {
         txaInfo.setEditable(false);
         txaInfo.setBackground(new java.awt.Color(204, 204, 204));
         txaInfo.setColumns(20);
+        txaInfo.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         txaInfo.setRows(5);
         jScrollPane1.setViewportView(txaInfo);
 

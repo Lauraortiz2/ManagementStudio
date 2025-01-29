@@ -28,7 +28,6 @@ public class Login extends javax.swing.JDialog {
         initComponents();
         setSize(400, 300);
         setLocationRelativeTo(null);
-        setResizable(false);
 
     }
 
@@ -49,14 +48,19 @@ public class Login extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setText("Por favor, introduce tu email");
 
-        txtUsuari.setText("user");
+        txtUsuari.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        txtUsuari.setText("a@b.c");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setText("Por favor, introduce tu contraseña");
 
-        txtPasswordLogin.setText("      ");
+        txtPasswordLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        txtPasswordLogin.setText("string");
 
+        btnLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +84,7 @@ public class Login extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(142, 142, 142)
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +97,7 @@ public class Login extends javax.swing.JDialog {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPasswordLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
         );
