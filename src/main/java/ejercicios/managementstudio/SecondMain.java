@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
-import net.imagenes.FilesInfo;
-import net.imagenes.NewFileListener;
 
 /**
  *
@@ -50,14 +48,6 @@ public class SecondMain extends javax.swing.JPanel {
            
         lstWorkoutDetail = new javax.swing.JList<>();
         jScrollPane1.setViewportView(lstWorkoutDetail);
-        jPanelImagenes1.addNewFileListener(new NewFileListener(){
-            @Override
-            public void newFile() {
-                jLabelStatusBar.setText("Se ha subido un nuevo archivo " + jPanelImagenes1.getFilesInfo().getLast().getName() + 
-                        jPanelImagenes1.getFilesInfo().getLast().getSize() + jPanelImagenes1.getFilesInfo().getLast().getDate());
-            }
-        
-        });
 }
 
     public void pintarUsers() {
@@ -112,9 +102,7 @@ public class SecondMain extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanelImagenes1 = new net.imagenes.JPanelImagenes();
         jLabelStatusBar = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         setPreferredSize(new java.awt.Dimension(700, 500));
@@ -128,19 +116,6 @@ public class SecondMain extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setText("Workout details:");
 
-        jPanelImagenes1.setConnectionString("DefaultEndpointsProtocol=https;AccountName=spdviblobserver;AccountKey=WxChLmV+vf9lZYL+o/xsqQz6+NBPFuXJRjtMKiwOM7wn0A11Y/kgeu7MiNVrXuRDuzdH89dZRM61+ASt5UrADg==;EndpointSuffix=core.windows.net");
-        jPanelImagenes1.setContainerName("spdviimagenes");
-        jPanelImagenes1.setPollingInterval(10);
-        jPanelImagenes1.setRunning(true);
-
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton1.setText("Calendario Workout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,9 +124,8 @@ public class SecondMain extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1))
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
@@ -159,8 +133,7 @@ public class SecondMain extends javax.swing.JPanel {
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane4))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelImagenes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(130, 130, 130)
                         .addComponent(jLabelStatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -180,34 +153,18 @@ public class SecondMain extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelStatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelImagenes1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13)
+                .addComponent(jLabelStatusBar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
-        WorkoutCalendar workoutCalendar = new WorkoutCalendar();
-        workoutCalendar.setBounds(0, 0, 570, 500);
-        workoutCalendar.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelStatusBar;
-    private net.imagenes.JPanelImagenes jPanelImagenes1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
