@@ -1,6 +1,5 @@
 package ejercicios.managementstudio;
 
-import ejercicios.DataAcces.DataAccess;
 import ejercicios.dto.Usuari;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,6 +29,8 @@ public class MainFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         add(mainPanel, BorderLayout.CENTER);
         menuBar.setVisible(false);
+        mainPanel.revalidate();
+        mainPanel.repaint();
 
     }
 
@@ -61,6 +62,7 @@ public class MainFrame extends javax.swing.JFrame {
         menuModExer = new javax.swing.JMenuItem();
         menuAddExer = new javax.swing.JMenuItem();
         menuDelExer = new javax.swing.JMenuItem();
+        menuWorkout = new javax.swing.JMenu();
         menuCreateWorkout = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         menuAbout = new javax.swing.JMenuItem();
@@ -78,7 +80,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setText("Iniciar sesión");
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image.png"))); // NOI18N
-        lblLogo.setText("jLabel2");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setText("www.ManagementStudio.com");
@@ -98,35 +99,40 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(493, 493, 493))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(282, 282, 282))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel1))
-                            .addComponent(jLabel4)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(229, Short.MAX_VALUE))
+                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLogo)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3)
-                .addContainerGap(285, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(281, 281, 281))
         );
 
         getContentPane().add(mainPanel);
@@ -223,16 +229,20 @@ public class MainFrame extends javax.swing.JFrame {
         });
         menuExercises.add(menuDelExer);
 
+        menuBar.add(menuExercises);
+
+        menuWorkout.setText("Workouts");
+
         menuCreateWorkout.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        menuCreateWorkout.setText("Create workout");
+        menuCreateWorkout.setText("Create Workout");
         menuCreateWorkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuCreateWorkoutActionPerformed(evt);
             }
         });
-        menuExercises.add(menuCreateWorkout);
+        menuWorkout.add(menuCreateWorkout);
 
-        menuBar.add(menuExercises);
+        menuBar.add(menuWorkout);
 
         menuHelp.setText("Help");
 
@@ -255,6 +265,9 @@ public class MainFrame extends javax.swing.JFrame {
     private void menuAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddUserActionPerformed
         addUser = new AddUser(this, true);
         addUser.setVisible(true);
+        secondMain.pintarUsers();
+        secondMain.revalidate();
+        secondMain.repaint();
     }//GEN-LAST:event_menuAddUserActionPerformed
 
 
@@ -265,16 +278,22 @@ public class MainFrame extends javax.swing.JFrame {
     private void menuViewExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewExerActionPerformed
         viewExer = new ViewExercises(this, true);
         viewExer.setVisible(true);
+        secondMain.revalidate();
+        secondMain.repaint();
     }//GEN-LAST:event_menuViewExerActionPerformed
 
     private void menuModExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModExerActionPerformed
         modExer = new ModExer(this, true);
         modExer.setVisible(true);
+        getContentPane().revalidate();
+        getContentPane().repaint();
     }//GEN-LAST:event_menuModExerActionPerformed
 
     private void menuAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAboutActionPerformed
         about = new About(this, true);
         about.setVisible(true);
+        getContentPane().revalidate();
+        getContentPane().repaint();
     }//GEN-LAST:event_menuAboutActionPerformed
 
     private void menuSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSignOutActionPerformed
@@ -287,26 +306,38 @@ public class MainFrame extends javax.swing.JFrame {
     private void menuAddExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddExerActionPerformed
         addExer = new AddExer(this, true);
         addExer.setVisible(true);
+        getContentPane().revalidate();
+        getContentPane().repaint();
     }//GEN-LAST:event_menuAddExerActionPerformed
 
     private void menuModUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModUserActionPerformed
         modUser = new ModUser(this, true);
         modUser.setVisible(true);
+        secondMain.pintarUsers();
+        secondMain.revalidate();
+        secondMain.repaint();
     }//GEN-LAST:event_menuModUserActionPerformed
 
     private void menuDelUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDelUserActionPerformed
         delUser = new DelUser(this, true);
         delUser.setVisible(true);
+        secondMain.pintarUsers();
+        secondMain.revalidate();
+        secondMain.repaint();
     }//GEN-LAST:event_menuDelUserActionPerformed
 
     private void menuDelExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDelExerActionPerformed
         delExer = new DelExer(this, true);
         delExer.setVisible(true);
+        getContentPane().revalidate();
+        getContentPane().repaint();
     }//GEN-LAST:event_menuDelExerActionPerformed
 
     private void menuCreateWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCreateWorkoutActionPerformed
         createWorkout = new CreateWorkout(this, true);
         createWorkout.setVisible(true);
+        getContentPane().revalidate();
+        getContentPane().repaint();
     }//GEN-LAST:event_menuCreateWorkoutActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -315,6 +346,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         if (login.isAuthenticated()) {
             showSecondMain(login.userConnected);
+            getContentPane().revalidate();
+            getContentPane().repaint();
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -325,7 +358,7 @@ public class MainFrame extends javax.swing.JFrame {
         secondMain = new SecondMain(userConnected);
         mainPanel.setVisible(false);
         getContentPane().add(secondMain);
-        secondMain.setBounds(0, 0, 570, 500);
+        secondMain.setBounds(0, 0, 700, 500);
         secondMain.setVisible(true);
         menuBar.setVisible(true);
         if (!userConnected.isInstructor()) {
@@ -335,6 +368,8 @@ public class MainFrame extends javax.swing.JFrame {
             menuDelExer.setVisible(false);
             menuCreateWorkout.setVisible(false);
         }
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 
     /**
@@ -380,6 +415,7 @@ public class MainFrame extends javax.swing.JFrame {
                 new MainFrame().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -405,5 +441,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuSignOut;
     private javax.swing.JMenu menuUsers;
     private javax.swing.JMenuItem menuViewExer;
+    private javax.swing.JMenu menuWorkout;
     // End of variables declaration//GEN-END:variables
 }
