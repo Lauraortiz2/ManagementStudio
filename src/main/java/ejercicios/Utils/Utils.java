@@ -6,6 +6,7 @@ import ejercicios.dto.Exercici;
 import ejercicios.dto.Usuari;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -29,6 +30,14 @@ public class Utils {
             dfmu.addElement(u);
         }
         return dfmu;
+    }
+        public static DefaultListModel pintarExers() {
+        ArrayList<Exercici> exercicis = DataAccess.getAllExercicis();
+        DefaultListModel<Exercici> dfme = new DefaultListModel<>();
+        for (Exercici e : exercicis) {
+            dfme.addElement(e);
+        }
+        return dfme;
     }
 
 }

@@ -26,6 +26,11 @@ public class Workout {
         this.idUsuari = userId;
         this.comments = comments;
     }
+    public Workout(String forDate, int userId, String comments) {
+        this.forDate = forDate;
+        this.idUsuari = userId;
+        this.comments = comments;
+    }
 
     public int getId() {
         return id;

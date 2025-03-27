@@ -1,6 +1,7 @@
 package ejercicios.managementstudio;
 
 import ejercicios.DataAcces.DataAccess;
+import ejercicios.Utils.Utils;
 import ejercicios.dto.Exercici;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -25,7 +26,7 @@ public class ViewExercises extends javax.swing.JDialog {
         
         lstExer = new javax.swing.JList<>();
         jScrollPane1.setViewportView(lstExer);
-        pintarExers();
+        lstExer.setModel(Utils.pintarExers());
         lstExer.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstExerValueChanged(evt);
@@ -33,15 +34,15 @@ public class ViewExercises extends javax.swing.JDialog {
         });
     }
 
-    public void pintarExers() {
-        ArrayList<Exercici> exercicis = da.getAllExercicis();
-        DefaultListModel<Exercici> dfme = new DefaultListModel<>();
-        for (Exercici e : exercicis) {
-            dfme.addElement(e);
-            
-        }
-        lstExer.setModel(dfme);
-    }
+//    public void pintarExers() {
+//        ArrayList<Exercici> exercicis = da.getAllExercicis();
+//        DefaultListModel<Exercici> dfme = new DefaultListModel<>();
+//        for (Exercici e : exercicis) {
+//            dfme.addElement(e);
+//            
+//        }
+//        lstExer.setModel(dfme);
+//    }
     
         private void lstExerValueChanged(javax.swing.event.ListSelectionEvent evt) {
         Exercici exerSelected = lstExer.getSelectedValue();

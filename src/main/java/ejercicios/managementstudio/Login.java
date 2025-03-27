@@ -117,7 +117,7 @@ public class Login extends javax.swing.JDialog {
             String passwordHashUserDb = user.getPasswordHash();
             var result = BCrypt.verifyer().verify(passwordToVerify, passwordHashUserDb);
             if (result.verified) {
-                JOptionPane.showMessageDialog(this, "Login successful. Welcome " + user.getNom());
+                //JOptionPane.showMessageDialog(this, "Welcome " + user.getNom());
                 this.setVisible(false);
                 authenticated = true;
                 userConnected = user;
