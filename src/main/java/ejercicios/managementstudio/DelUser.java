@@ -8,7 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Clase que representa una ventana de diálogo para eliminar un usuario
  * @author laura
  */
 public class DelUser extends javax.swing.JDialog {
@@ -19,6 +19,11 @@ public class DelUser extends javax.swing.JDialog {
     private javax.swing.JComboBox<Usuari> cmbUsuari;
     private DataAccess da = new DataAccess();
 
+    /**
+     * Constructor de la clase DelUser
+     * @param parent la ventana principal de la aplicación
+     * @param modal indica si el diálogo debe ser modal o no
+     */
     public DelUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -89,6 +94,11 @@ public class DelUser extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción que se realiza al pulsar el botón "Delete user".
+     * Elimina el usuario proporcionado por el usuario de la base de datos.
+     * @param evt 
+     */
     private void btnDelUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelUserActionPerformed
 
         Usuari user = (Usuari) cmbUsuari.getSelectedItem();

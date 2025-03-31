@@ -11,7 +11,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 
 /**
- *
+ * Panel principal de la aplicación, que se muestra cuando hay un usuario conectado.
+ * Muestra los usuarios, entrenamientos y detalles de los workouts.
  * @author laura
  */
 public class SecondMain extends javax.swing.JPanel {
@@ -26,6 +27,10 @@ public class SecondMain extends javax.swing.JPanel {
     private DataAccess da = new DataAccess();
     private Usuari userConnected = new Usuari();
 
+    /**
+     * Constructor de la clase SecondMain
+     * @param userConnected usuario conectado a la aplicación
+     */
     public SecondMain(Usuari userConnected) {
         initComponents();       
         this.userConnected = userConnected;
@@ -50,6 +55,9 @@ public class SecondMain extends javax.swing.JPanel {
         jScrollPane1.setViewportView(lstWorkoutDetail);
 }
 
+    /**
+     * Método para obtener y mostrar una lista de los usuarios asocioados al instructor conectado.
+     */
     public void pintarUsers() {
         ArrayList<Usuari> users = da.getAllUsersByInstructor(userConnected.getId());
         DefaultListModel<Usuari> dfmu = new DefaultListModel<>();
@@ -62,13 +70,22 @@ public class SecondMain extends javax.swing.JPanel {
         this.repaint();
     }
 
+    /**
+     * Método que se ejecuta cuando se selecciona un usuario de la lista.
+     * Carga y muestra los entrenamientos de dicho usuario.
+     * @param evt 
+     */
     private void lstUsersValueChanged(javax.swing.event.ListSelectionEvent evt) {
         Usuari userSelected = lstUsers.getSelectedValue();
         pintarWorkouts(userSelected);
         this.revalidate();
         this.repaint();
     }
-
+    
+    /**
+     * Método para obtener y mostrar los workouts del usuario seleccionado.
+     * @param user usuario seleccionado
+     */
     public void pintarWorkouts(Usuari user) {
         ArrayList<Workout> workouts = da.getWorkoutsPerUser(user);
         DefaultComboBoxModel<Workout> dfmw = new DefaultComboBoxModel<>();
@@ -80,6 +97,11 @@ public class SecondMain extends javax.swing.JPanel {
         this.repaint();
     }
 
+    /**
+     * Método que se ejecuta cuando se selecciona un workout.
+     * Carga y Muestra los ejercicios asociados a dicha workout.
+     * @param evt 
+     */
     private void cmbWorkoutsValueChanged(java.awt.event.ActionEvent evt) {
         Workout workout = (Workout)cmbWorkout.getSelectedItem();
 

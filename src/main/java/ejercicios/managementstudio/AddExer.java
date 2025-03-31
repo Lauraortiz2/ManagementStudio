@@ -1,14 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package ejercicios.managementstudio;
 
 import ejercicios.DataAcces.DataAccess;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase que representa una ventana de diálogo para agregar un nuevo ejercicio
  * @author laura
  */
 public class AddExer extends javax.swing.JDialog {
@@ -18,6 +15,11 @@ public class AddExer extends javax.swing.JDialog {
      */
     private DataAccess da = new DataAccess();
     
+    /**
+     * Constructor de la clase AddExer
+     * @param parent la ventana principal de la aplicación
+     * @param modal indica si el diálogo debe ser modal o no
+     */
     public AddExer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -117,6 +119,12 @@ public class AddExer extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción realizada al presionar el botón Add Exercise
+     * Inserta un nuevo ejercicio en la base de datos con los datos ingresados por el usuario.
+     * En caso de éxito se muestra un mensaje de confirmación y cierra la ventana.
+     * @param evt 
+     */
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
        if(da.insertExercici(txtExerName.getText(), txtExerDesc.getText(), txtExerFoto.getText()) >0){
             JOptionPane.showMessageDialog(rootPane, "Exercise successfully inserted");

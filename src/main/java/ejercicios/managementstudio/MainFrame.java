@@ -6,7 +6,7 @@ import java.awt.Color;
 import javax.swing.UIManager;
 
 /**
- *
+ * Clase principal de la aplicación que maneja la interfaz gráfica
  * @author laura
  */
 public class MainFrame extends javax.swing.JFrame {
@@ -23,6 +23,10 @@ public class MainFrame extends javax.swing.JFrame {
     DelUser delUser;
     About about;
 
+    /**
+     * Constructor de la clase.
+     * Configura el tamaño y la ubicación de la ventana y oculta el menú hasta que un usuario se conecte a la aplicación
+     */
     public MainFrame() {
         initComponents();
         setSize(700, 500);
@@ -262,6 +266,11 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción que se realiza al seleccionar la opción añadir usuario del menú.
+     * Abre el diálogo para añadir un usuario a la base de datos.
+     * @param evt 
+     */
     private void menuAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddUserActionPerformed
         addUser = new AddUser(this, true);
         addUser.setVisible(true);
@@ -271,10 +280,19 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menuAddUserActionPerformed
 
 
+    /**
+     * Cierra la aplicación al seleccionar la opción salir en el menú.
+     * @param evt 
+     */
     private void menuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitActionPerformed
         this.dispose();
     }//GEN-LAST:event_menuExitActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción ver ejercicios del menú.
+     * Abre el diálogo para ver todos los ejercicios de la base de datos.
+     * @param evt 
+     */
     private void menuViewExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewExerActionPerformed
         viewExer = new ViewExercises(this, true);
         viewExer.setVisible(true);
@@ -282,6 +300,11 @@ public class MainFrame extends javax.swing.JFrame {
         secondMain.repaint();
     }//GEN-LAST:event_menuViewExerActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción modificar ejercicio del menú.
+     * Abre el diálogo para modificar un exercicio de la base de datos.
+     * @param evt 
+     */
     private void menuModExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModExerActionPerformed
         modExer = new ModExer(this, true);
         modExer.setVisible(true);
@@ -289,6 +312,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().repaint();
     }//GEN-LAST:event_menuModExerActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción about del menú.
+     * Abre el diáologo de información de la aplicación.
+     * @param evt 
+     */
     private void menuAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAboutActionPerformed
         about = new About(this, true);
         about.setVisible(true);
@@ -296,6 +324,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().repaint();
     }//GEN-LAST:event_menuAboutActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción sign out del menú.
+     * Desconecta al usuario de la aplicación y muestra la pantalla inicial.
+     * @param evt 
+     */
     private void menuSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSignOutActionPerformed
         secondMain.setVisible(false);
         mainPanel.setVisible(true);
@@ -303,6 +336,11 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.repaint();
     }//GEN-LAST:event_menuSignOutActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción añadir ejercicio del menú.
+     * Abre el diálogo para añadir un ejercicio a la base de datos.
+     * @param evt 
+     */
     private void menuAddExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddExerActionPerformed
         addExer = new AddExer(this, true);
         addExer.setVisible(true);
@@ -310,6 +348,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().repaint();
     }//GEN-LAST:event_menuAddExerActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción modificar usuario del menú.
+     * Abre el diálogo para modificar un usuario de la base de datos.
+     * @param evt 
+     */
     private void menuModUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModUserActionPerformed
         modUser = new ModUser(this, true);
         modUser.setVisible(true);
@@ -318,6 +361,11 @@ public class MainFrame extends javax.swing.JFrame {
         secondMain.repaint();
     }//GEN-LAST:event_menuModUserActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción eliminar usuario del menú.
+     * Abre el diálogo para eliminar un usuario de la base de datos.
+     * @param evt 
+     */
     private void menuDelUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDelUserActionPerformed
         delUser = new DelUser(this, true);
         delUser.setVisible(true);
@@ -326,6 +374,11 @@ public class MainFrame extends javax.swing.JFrame {
         secondMain.repaint();
     }//GEN-LAST:event_menuDelUserActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción eliminar ejercicio del menú.
+     * Abre el diálogo para eliminar un ejercicio de la base de datos.
+     * @param evt 
+     */
     private void menuDelExerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDelExerActionPerformed
         delExer = new DelExer(this, true);
         delExer.setVisible(true);
@@ -333,6 +386,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().repaint();
     }//GEN-LAST:event_menuDelExerActionPerformed
 
+    /**
+     * Acción que se realiza al seleccionar la opción crear workout del menú.
+     * Abre el diálogo para crear una workout en la base de datos.
+     * @param evt 
+     */
     private void menuCreateWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCreateWorkoutActionPerformed
         createWorkout = new CreateWorkout(this, true);
         createWorkout.setVisible(true);
@@ -340,6 +398,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().repaint();
     }//GEN-LAST:event_menuCreateWorkoutActionPerformed
 
+    /**
+     * Acción que se realiza al pulsar el botón de login.
+     * Abre el diálogo para iniciar sesión en la aplicación.
+     * @param evt 
+     */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         login = new Login(this, true);
         login.setVisible(true);
@@ -351,8 +414,8 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    /*
-    Method to change the main view when someone is logged in the app
+    /**
+     * Método para cambiar la vista principal cuando un usuario inicia sesión en la aplicación
      */
     private void showSecondMain(Usuari userConnected) {
         secondMain = new SecondMain(userConnected);

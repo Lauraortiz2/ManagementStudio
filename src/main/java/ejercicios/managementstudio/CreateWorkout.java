@@ -11,7 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Clase que representa una ventana de diálogo para agregar una nueva workout.
  * @author laura
  */
 public class CreateWorkout extends javax.swing.JDialog {
@@ -23,6 +23,11 @@ public class CreateWorkout extends javax.swing.JDialog {
     private javax.swing.JList<Exercici> lstExer;
     private DataAccess da = new DataAccess();
 
+    /**
+     * Constructor de la clase CreateWorkout
+     * @param parent la ventana principal de la aplicación
+     * @param modal indica si el diálogo debe ser modal o no
+     */
     public CreateWorkout(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -155,6 +160,11 @@ public class CreateWorkout extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción realizada al pulsar el botón "Create workout".
+     * Inserta una nueva workout en la base de datos con la información proporcionada por el usuario.
+     * @param evt 
+     */
     private void btnCreateWorkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateWorkoutActionPerformed
         Usuari user = (Usuari) cmbUsuari.getSelectedItem();
         ArrayList<Exercici> exercicis = new ArrayList<>(lstExer.getSelectedValuesList());

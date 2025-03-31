@@ -2,13 +2,15 @@
 package ejercicios.managementstudio;
 
 /**
- *
+ * Clase que representa una ventana de diálogo para ver información sobre la aplicación
  * @author laura
  */
 public class About extends javax.swing.JDialog {
 
     /**
      * Creates new form About
+     * @param parent
+     * @param modal
      */
     public About(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

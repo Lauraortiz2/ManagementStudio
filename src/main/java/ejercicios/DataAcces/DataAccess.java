@@ -20,9 +20,14 @@ import java.util.logging.Logger;
 /**
  *
  * @author laura
+ * Proporciona métodos para interactuar con la base de datos.
  */
 public class DataAccess {
-
+    
+    /**
+     *Obtiene una conexión con la base de datos
+     * @return un objteo Connection si se realiza la conexión con éxito, en caso contrario un null.
+     */
     public static Connection getConnection() {
         Connection connection = null;
         Properties properties = new Properties();
@@ -41,6 +46,11 @@ public class DataAccess {
         return connection;
     }
 
+    /**
+     * Recuperar un usuario por su email
+     * @param email
+     * @return un objeto Usuari si se encuentra o un null en caso contrario.
+     */
     public static Usuari getUser(String email) {
         Usuari user = null;
         String sql = "SELECT * FROM Usuaris WHERE Email = ?";
@@ -61,6 +71,10 @@ public class DataAccess {
         return user;
     }
 
+    /**
+     * Recuperar los usuarios que no son instructores
+     * @return una lista de objetos Usuari 
+     */
     public static ArrayList<Usuari> getAllUsers() {
         ArrayList<Usuari> usuaris = new ArrayList<>();
         String sql = "SELECT * FROM Usuaris WHERE Instructor=0";
@@ -83,6 +97,11 @@ public class DataAccess {
         return usuaris;
     }
 
+    /**
+     * Recupera los usuarios por instructor
+     * @param idInstructor
+     * @return una lista de objetos Usuari
+     */
     public static ArrayList<Usuari> getAllUsersByInstructor(int idInstructor) {
         ArrayList<Usuari> usuaris = new ArrayList<>();
         String sql = "SELECT * FROM Usuaris WHERE AssignedInstructor=?";
@@ -105,6 +124,11 @@ public class DataAccess {
         return usuaris;
     }
 
+    /**
+     * Recupera las workouts por usuario
+     * @param user
+     * @return una lista de objetos Workout
+     */
     public static ArrayList<Workout> getWorkoutsPerUser(Usuari user) {
         ArrayList<Workout> workouts = new ArrayList<>();
         String sql = "SELECT Workouts.Id, Workouts.ForDate, Workouts.UserId, Workouts.Comments"
@@ -131,6 +155,11 @@ public class DataAccess {
 
     }
 
+    /**
+     * Recupera los ejercicios por workout
+     * @param workout
+     * @return una lista de objetos Exercici
+     */
     public static ArrayList<Exercici> getExercicisPerWorkout(Workout workout) {
         ArrayList<Exercici> exercicis = new ArrayList<>();
         String sql = "SELECT ExercicisWorkouts.IdExercici,"
@@ -156,6 +185,10 @@ public class DataAccess {
         return exercicis;
     }
 
+    /**
+     * Recupera todos los ejercicios
+     * @return una lista de objetos Exercici
+     */
     public static ArrayList<Exercici> getAllExercicis() {
         ArrayList<Exercici> exercicis = new ArrayList<>();
         String sql = "SELECT Id, Exercicis.NomExercici, Exercicis.Descripcio, Exercicis.DemoFoto"
@@ -179,6 +212,12 @@ public class DataAccess {
         return exercicis;
     }
 
+    /**
+     * Registra un nuevo usuario en la base de datos
+     * @param u objeto Usuari 
+     * @param imageFile archivo de imagen del usuario
+     * @return id del usuario insertado
+     */
     public static int registerUser(Usuari u, File imageFile) {
         String sql = "INSERT INTO dbo.Usuaris (Nom, Email, PasswordHash, Foto, FotoFilename, Instructor)"
                 + " VALUES (?,?,?,?,?,?)"
@@ -203,12 +242,22 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * insertar un nuevo workout en la base de datos
+     * @param w objeto Workout
+     * @param exercicis lista de Exercici asociados a la workout
+     */
     public static void insertWorkout(Workout w, ArrayList<Exercici> exercicis) {
         // The following should be done in a SQL transaction
         int newWorkoutId = insertToWorkoutTable(w);
         insertExercisesPerWorkout(newWorkoutId, exercicis);
     }
 
+    /**
+     * insertar un workout en la tabla Workouts
+     * @param w objeto workout
+     * @return id del workout insertado
+     */
     private static int insertToWorkoutTable(Workout w) {
         String sql = "INSERT INTO dbo.Workouts (ForDate, UserId, Comments)"
                 + " VALUES (?,?,?)";
@@ -237,6 +286,12 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * inserta ejercicios por workout
+     * @param wId id de una workout
+     * @param exercicis lista de ejercicios asociados a la workout
+     * @return tamaño de la lista de ejercicios insertada
+     */
     private static int insertExercisesPerWorkout(int wId, ArrayList<Exercici> exercicis) {
         for (Exercici e : exercicis) {
             int rowsAffected = insertExerciciPerWorkout(wId, e);
@@ -247,6 +302,12 @@ public class DataAccess {
         return exercicis.size();
     }
 
+    /**
+     * insertar ejercicios por workout
+     * @param wId id de la workout
+     * @param e objeto Exercici
+     * @return número de filas afectadas
+     */
     private static int insertExerciciPerWorkout(int wId, Exercici e) {
         String sql = "INSERT INTO dbo.ExercicisWorkouts (IdWorkout, IdExercici)"
                 + " VALUES (?,?)";
@@ -261,6 +322,13 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * actualizar un ejercicio
+     * @param exerId id del ejercicio
+     * @param field campo a actualizar
+     * @param value valor a insertar en el campo
+     * @return número de filas afectadas
+     */
     public int updateExercici(int exerId, String field, String value) {
         String sql = "UPDATE dbo.Exercicis SET " + field + "= '" + value + "' WHERE Id = " + exerId;
         try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {
@@ -273,6 +341,13 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * insertar un ejercicio en la base de datos
+     * @param nom nombre del ejercicio
+     * @param descripcion descripción del ejercicio
+     * @param demoFoto foto demostración del ejercicio
+     * @return número de filas afectadas
+     */
     public int insertExercici(String nom, String descripcion, String demoFoto) {
         String sql = "INSERT INTO dbo.Exercicis (NomExercici, Descripcio, DemoFoto)"
                 + " VALUES (?,?,?)";
@@ -288,6 +363,11 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * recuperar el número de ejercicios por workout
+     * @param exerId id de la workout
+     * @return número de veces que se repite un ejercicio en todas las workouts
+     */
     public static int getCountExercicisPerWorkout(int exerId) {
         String sql = "SELECT count(IdWorkout) counter"
                 + " FROM ExercicisWorkouts "
@@ -305,6 +385,11 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * eliminar un ejercicio de la base de datos
+     * @param exerId id del ejercicio
+     * @return número de filas afectadas
+     */
     public int deleteExercici(int exerId) {
         String sql = "DELETE FROM dbo.Exercicis WHERE Id = " + exerId;
         try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {
@@ -316,6 +401,13 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * crear una workout
+     * @param date fecha de la workout
+     * @param userId id del usuario al que se le asigna la workout
+     * @param comments comentarios de la workout
+     * @return número de filas afectadas
+     */
     public int createWorkout(String date, int userId, String comments) {
         String sql = "INSERT INTO dbo.Workouts (ForDate,UserId, Comments)"
                 + " VALUES (?,?,?)";
@@ -331,6 +423,11 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * Eliminar un usuario de la base de datos
+     * @param userId id del usuario
+     * @return número de filas afectadas
+     */
     public int deleteUser(int userId) {
         String sql = "DELETE FROM dbo.Usuaris WHERE Id = " + userId;
         try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {
@@ -342,6 +439,13 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * actualizar un usuario
+     * @param userId id del usuario
+     * @param field campo que se quiere actualizar
+     * @param value valor para asignar al campo
+     * @return número de filas afectadas
+     */
     public int updateUser(int userId, String field, String value) {
         String sql = "UPDATE dbo.Usuaris SET " + field + "= '" + value + "' WHERE Id = " + userId;
         try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {
@@ -353,6 +457,12 @@ public class DataAccess {
         return 0;
     }
 
+    /**
+     * actualizar al foto de un usuario
+     * @param userId id del usuario
+     * @param imageFile archivo de imagen del usuario
+     * @return número de filas afectadas
+     */
     public int updateFotoUser(int userId, File imageFile) {
         String sql = "UPDATE dbo.Usuaris SET Foto =?, FotoFilename = ? WHERE Id = ?";
         try (Connection conn = getConnection(); PreparedStatement updateStatement = conn.prepareStatement(sql)) {

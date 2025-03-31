@@ -11,7 +11,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Clase que representa una ventana de diálogo para modificar un usuario.
  * @author laura
  */
 public class ModUser extends javax.swing.JDialog {
@@ -22,6 +22,11 @@ public class ModUser extends javax.swing.JDialog {
     private javax.swing.JComboBox<Usuari> cmbUsuari;
     private DataAccess da = new DataAccess();
 
+    /**
+     * Constructor de la clase ModUser
+     * @param parent la ventana principal de la aplicación
+     * @param modal indica si el diálogo debe ser modal o no
+     */
     public ModUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -147,6 +152,12 @@ public class ModUser extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción que se realiza al pulsar el botón modificar usuario.
+     * Modifica un usuario en la base de datos.
+     * En caso de éxito se muestra un mensaje de confirmación y se cierra la ventana.
+     * @param evt 
+     */
     private void btnModUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModUserActionPerformed
         Usuari user = (Usuari) cmbUsuari.getSelectedItem();
         String value;
@@ -174,6 +185,11 @@ public class ModUser extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnModUserActionPerformed
 
+    /**
+     * Acción que se realiza al pulsar el botón foto.
+     * Se abre una ventana para seleccionar una imagen del directorio del pc.
+     * @param evt 
+     */
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         int returnOption = fileChooser.showOpenDialog(this);

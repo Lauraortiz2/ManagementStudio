@@ -10,7 +10,7 @@ import ejercicios.dto.Usuari;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase que representa una ventana de diálogo para conectarse a la aplicación (realizar el login).
  * @author laura
  */
 public class Login extends javax.swing.JDialog {
@@ -21,8 +21,17 @@ public class Login extends javax.swing.JDialog {
     
     DataAccess da = new DataAccess();
     private boolean authenticated = false;
+
+    /**
+     *
+     */
     public Usuari userConnected = new Usuari();
     
+    /**
+     * Constructor de la clase Login
+     * @param parent la ventana principal de la aplicación
+     * @param modal indica si el diálogo debe ser modal o no
+     */
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -109,6 +118,12 @@ public class Login extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción que se realiza al pulsar el botón "Login".
+     * Se validan los datos proporcionados para conectarse a la aplicación.
+     * En caso de éxito, aparece el menú principal de la aplicación. En caso contrario, se muestra un mensaje de error.
+     * @param evt 
+     */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
         Usuari user = da.getUser(txtUsuari.getText());
@@ -171,6 +186,10 @@ public class Login extends javax.swing.JDialog {
         });
     }
     
+    /**
+     * Método para saber si hay un usuario conectado a la aplicación
+     * @return true si hay un usuario conectado, false si no hay ningún usuario conectado.
+     */
     public boolean isAuthenticated(){
     return authenticated;
     }

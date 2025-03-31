@@ -7,7 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Clase que representa una ventana de diálogo para eliminar un ejercicio
  * @author laura
  */
 public class DelExer extends javax.swing.JDialog {
@@ -18,6 +18,11 @@ public class DelExer extends javax.swing.JDialog {
     private DataAccess da = new DataAccess();
     private javax.swing.JComboBox<Exercici> cmbExercici;
 
+    /**
+     * Constructor de la clase DelExer
+     * @param parent la ventana principal de la aplicación
+     * @param modal indica si el diálogo debe ser modal o no
+     */
     public DelExer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -88,6 +93,11 @@ public class DelExer extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción que se realiza al pulsar el botón "Delete exercise".
+     * Elimina el ejercicio proporcionado por el usuario de la base de datos.
+     * @param evt 
+     */
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
         Exercici exer = (Exercici) cmbExercici.getSelectedItem();
         if (da.getCountExercicisPerWorkout(exer.getId()) == 0) {

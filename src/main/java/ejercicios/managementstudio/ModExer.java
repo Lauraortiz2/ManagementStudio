@@ -8,7 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase que representa una ventana de diálogo para modificar un ejercicio
  * @author laura
  */
 public class ModExer extends javax.swing.JDialog {
@@ -19,6 +19,11 @@ public class ModExer extends javax.swing.JDialog {
     private DataAccess da = new DataAccess();
     private javax.swing.JComboBox<Exercici> cmbExercici;
 
+    /**
+     * Constructor de la clase ModExer
+     * @param parent la ventana principal de la aplicación
+     * @param modal indica si el diálogo debe ser modal o no
+     */
     public ModExer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -124,6 +129,12 @@ public class ModExer extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción que se realiza al pulsar el botón Modificar ejercicio.
+     * Modifica un ejercicio en la base de datos.
+     * En caso de éxito muestra un mensaje de confirmación y cierra la ventana.
+     * @param evt 
+     */
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
         Exercici exer = (Exercici) cmbExercici.getSelectedItem();
         if (da.updateExercici(exer.getId(), cmbCampo.getSelectedItem().toString(), txtModExer.getText()) > 0) {

@@ -3,11 +3,9 @@ package ejercicios.managementstudio;
 import ejercicios.DataAcces.DataAccess;
 import ejercicios.Utils.Utils;
 import ejercicios.dto.Exercici;
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 
 /**
- *
+ * Clase que representa una ventana de diálogo para ver los ejercicios
  * @author laura
  */
 public class ViewExercises extends javax.swing.JDialog {
@@ -18,6 +16,11 @@ public class ViewExercises extends javax.swing.JDialog {
     private javax.swing.JList<Exercici> lstExer;
     private DataAccess da = new DataAccess();
 
+    /**
+     * Constructor de la clase ViewExercises
+     * @param parent la ventana principal de la aplicación
+     * @param modal indica si el diálogo debe ser modal o no
+     */
     public ViewExercises(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -34,16 +37,11 @@ public class ViewExercises extends javax.swing.JDialog {
         });
     }
 
-//    public void pintarExers() {
-//        ArrayList<Exercici> exercicis = da.getAllExercicis();
-//        DefaultListModel<Exercici> dfme = new DefaultListModel<>();
-//        for (Exercici e : exercicis) {
-//            dfme.addElement(e);
-//            
-//        }
-//        lstExer.setModel(dfme);
-//    }
-    
+    /**
+     * Método que se ejecuta al seleccionar un ejercicio de la lista.
+     * Muestra los detalles del ejercicio seleccionado.
+     * @param evt 
+     */
         private void lstExerValueChanged(javax.swing.event.ListSelectionEvent evt) {
         Exercici exerSelected = lstExer.getSelectedValue();
         txtDetails.setText(exerSelected.getNomExercici() + " " + exerSelected.getDescripcio() + " " + exerSelected.getDemoFoto());
