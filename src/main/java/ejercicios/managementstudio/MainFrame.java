@@ -3,6 +3,7 @@ package ejercicios.managementstudio;
 import ejercicios.dto.Usuari;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
 /**
@@ -31,6 +32,8 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         setSize(700, 500);
         setLocationRelativeTo(null);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/image.png"));
+        setIconImage(icon.getImage());
         add(mainPanel, BorderLayout.CENTER);
         menuBar.setVisible(false);
         mainPanel.revalidate();

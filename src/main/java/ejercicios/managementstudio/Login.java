@@ -22,9 +22,7 @@ public class Login extends javax.swing.JDialog {
     DataAccess da = new DataAccess();
     private boolean authenticated = false;
 
-    /**
-     *
-     */
+
     public Usuari userConnected = new Usuari();
     
     /**
